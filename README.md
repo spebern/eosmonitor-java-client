@@ -11,7 +11,7 @@
 Simple client for consuming https://github.com/eostea/eosmonitor-api
 
 This library is a very thin wrapper, so when using you decide if you want
-it an async or sync way.
+asynchronous or synchronous requests.
 
 ## Usage (synchronous requests):
 
