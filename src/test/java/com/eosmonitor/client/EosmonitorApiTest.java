@@ -38,7 +38,7 @@ public class EosmonitorApiTest extends TestCase {
         // BlockInfo blockInfo = client.getBlockInfo("9559286").execute().body();
     }
 
-    public void testGetTransaction() throws IOException {
+    public void testGetTransactionInfo() throws IOException {
         String txId = "c5504cbbb70ce297cffc1bdd9a856e0497f3b64420bdae79063123b3ec3f5186";
         TransactionInfo txInfo = client.getTransactionInfo(txId).execute().body();
         assertEquals(
