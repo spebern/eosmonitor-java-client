@@ -42,7 +42,7 @@ public class Data {
     private List<String> signatures;
     @SerializedName("signing_keys")
     @Expose
-    private SigningKeys signingKeys;
+    private List<String> signingKeys;
     @SerializedName("transaction_extensions")
     @Expose
     private List<Object> transactionExtensions;
@@ -138,11 +138,11 @@ public class Data {
         this.signatures = signatures;
     }
 
-    public SigningKeys getSigningKeys() {
+    public List<String> getSigningKeys() {
         return signingKeys;
     }
 
-    public void setSigningKeys(SigningKeys signingKeys) {
+    public void setSigningKeys(List<String> signingKeys) {
         this.signingKeys = signingKeys;
     }
 
