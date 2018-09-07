@@ -1,12 +1,13 @@
 package com.eosmonitor.client.pojo.BlockInfo;
 
+import com.eosmonitor.client.pojo.ErrorCode;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class BlockInfo {
     @SerializedName("code")
     @Expose
-    private Integer code;
+    private ErrorCode code;
     @SerializedName("data")
     @Expose
     private Data data;
@@ -17,11 +18,11 @@ public class BlockInfo {
     @Expose
     private String message;
 
-    public Integer getCode() {
+    public ErrorCode getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(ErrorCode code) {
         this.code = code;
     }
 

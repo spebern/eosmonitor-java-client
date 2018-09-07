@@ -2,6 +2,7 @@ package com.eosmonitor.client;
 
 import com.eosmonitor.client.pojo.AccountInfo.AccountInfo;
 import com.eosmonitor.client.pojo.BlockInfo.BlockInfo;
+import com.eosmonitor.client.pojo.ErrorCode;
 import com.eosmonitor.client.pojo.TransactionActions.Action;
 import com.eosmonitor.client.pojo.TransactionActions.TransactionActions;
 import com.eosmonitor.client.pojo.TransactionInfo.TransactionInfo;
@@ -29,6 +30,7 @@ public class EosmonitorApiTest extends TestCase {
 
     public void testGetAccountInfo() throws IOException {
         AccountInfo accountInfo = client.getAccountInfo("huobideposit").execute().body();
+        assertEquals(ErrorCode.SUCCESS, accountInfo.getCode());
         assertEquals("huobideposit", accountInfo.getData().getName());
         assertEquals("heztanrtgege", accountInfo.getData().getCreator());
     }
@@ -41,6 +43,7 @@ public class EosmonitorApiTest extends TestCase {
     public void testGetTransactionInfo() throws IOException {
         String txId = "c5504cbbb70ce297cffc1bdd9a856e0497f3b64420bdae79063123b3ec3f5186";
         TransactionInfo txInfo = client.getTransactionInfo(txId).execute().body();
+        assertEquals(ErrorCode.SUCCESS, txInfo.getCode());
         assertEquals(
                 "SIG_K1_JzL2sNqDSUetbzv5uQp8XwV2UwNY49Gvcd7kzVmX2bVAb4CTfPQJQjpGXp1XezgWQ4t38s7mmfjmYoeihT6RZcdzFqCUrr",
                 txInfo.getData().getSignatures().get(0) );
@@ -56,6 +59,7 @@ public class EosmonitorApiTest extends TestCase {
     public void testGetTransactionActions() throws IOException {
         String txId = "c5504cbbb70ce297cffc1bdd9a856e0497f3b64420bdae79063123b3ec3f5186";
         TransactionActions txActions = client.getTransactionActions(txId, null, null).execute().body();
+        assertEquals(ErrorCode.SUCCESS, txActions.getCode());
         assertEquals(1, txActions.getData().getTotal().intValue());
         assertEquals("transfer", txActions.getData().getActions().get(0).getName());
         assertEquals(txId, txActions.getData().getActions().get(0).getTrxId());
@@ -73,6 +77,7 @@ public class EosmonitorApiTest extends TestCase {
 
     public void testGetActions() throws IOException {
         TransactionActions txActions = client.getActions("huobideposit", "transfer", null, null).execute().body();
+        assertEquals(ErrorCode.SUCCESS, txActions.getCode());
         assertNotNull(txActions.getData().getTotal());
     }
 }
